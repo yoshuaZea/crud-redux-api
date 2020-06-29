@@ -13,7 +13,7 @@ connectDB()
 app.use(express.json({ extended: true }))
 
 // Definir un dominio(s) para las peticiones en un arreglo
-const whiteList = [process.env.FRONTEND_URL];
+const whiteList = [process.env.FRONTEND_URL, 'http://192.168.0.12'];
 
 // Opciones de CORS para dar acceso o no a los endpoint
 const corsOptions = {
@@ -35,6 +35,7 @@ app.use(cors(corsOptions))
 
 // Importar rutas
 app.use('/api/productos', require('./routes/productos'))
+app.use('/api/clientes', require('./routes/clientes'))
 
 //SERVIDOR Y PUERTO PARA HEROKU
 const host = process.env.HOST || '0.0.0.0';
